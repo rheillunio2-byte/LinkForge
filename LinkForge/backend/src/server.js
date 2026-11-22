@@ -12,8 +12,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = Number(process.env.PORT || 4000);
-const BASE_URL = https://linkforge-g87h.onrender.com;
-const FRONTEND_ORIGIN = https://link-forge-mocha.vercel.app/;
+const BASE_URL = (process.env.BASE_URL || `http://localhost:${PORT}`).replace(/\/$/, '');
+const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
 const dataFile = process.env.DATA_FILE || path.join(__dirname, '../data/links.json');
 
 // Lightweight JSON persistence avoids native Node addons and works on Windows without C++ build tools.
